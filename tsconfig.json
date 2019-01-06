@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-testing": [
+        "dist/ngx-testing"
+      ],
+      "ngx-testing/*": [
+        "dist/ngx-testing/*"
+      ]
+    }
   }
 }
