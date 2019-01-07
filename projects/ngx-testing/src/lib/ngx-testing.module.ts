@@ -22,7 +22,7 @@ export class NgxTestingModule<T = any> {
     compType: Type<T>,
     extras: TestingComponentModuleExtras = {},
   ): ModuleWithProviders<NgxTestingModule<T>> {
-    const testModule = getTestingModuleFor(compType);
+    const testModule = getTestingModuleFor(compType, compType);
     return {
       ngModule: testModule,
       providers: [
@@ -51,7 +51,7 @@ export class NgxTestingModule<T = any> {
   }
 }
 
-function getTestingModuleFor<T>(type: Type<T>, entryType: Type<any> = type) {
+function getTestingModuleFor<T>(type: Type<T>, entryType?: Type<any>) {
   @NgModule({
     imports: [NgxTestingModule],
     exports: [NgxTestingModule, type],
