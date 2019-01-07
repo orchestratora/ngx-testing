@@ -20,7 +20,9 @@
     "format": "npm-run-all -p format:*",
     "format:code": "prettier --write \"projects/**/*.{ts,js,json,?css}\"",
     "format:html": "prettyhtml \"projects/**/*.html\"",
-    "presemantic-release": "npm run build",
+    "pack": "npm run build",
+    "postpack": "copyfiles LICENSE README.md dist/ngx-testing",
+    "presemantic-release": "npm run pack",
     "semantic-release": "cd dist/ngx-testing && semantic-release"
   },
   "private": true,
@@ -55,6 +57,7 @@
     "codecov": "^3.1.0",
     "codelyzer": "~4.5.0",
     "commitizen": "^3.0.5",
+    "copyfiles": "^2.1.0",
     "cz-conventional-changelog": "^2.1.0",
     "husky": "^1.3.1",
     "jasmine-core": "~2.99.1",
