@@ -13,7 +13,7 @@
     "build": "ng build",
     "test": "ng test --watch=false",
     "test:w": "ng test --watch=true",
-    "test:ci": "npm run test -- --code-coverage",
+    "test:ci": "npm run test -- --code-coverage --browsers ChromeHeadless",
     "test:report": "cd coverage && codecov",
     "lint": "ng lint",
     "e2e": "ng e2e",
