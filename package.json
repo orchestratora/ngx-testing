@@ -1,6 +1,6 @@
 {
-  "name": "ngx-testing",
-  "version": "0.0.0-development",
+  "name": "@orchestrator/ngx-testing",
+  "version": "0.0.0-develop",
   "repository": {
     "type": "git",
     "url": "https://github.com/orchestratora/ngx-testing.git"
