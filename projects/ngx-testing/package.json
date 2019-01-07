@@ -5,5 +5,9 @@
     "@angular/common": "^7.0.0",
     "@angular/core": "^7.0.0",
     "@angular/platform-browser": "^7.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/orchestratora/ngx-testing.git"
   }
 }
