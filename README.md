@@ -1,5 +1,12 @@
 # NgxTesting
 
+[![Build Status](https://travis-ci.org/orchestratora/ngx-testing.svg?branch=master)](https://travis-ci.org/orchestratora/ngx-testing)
+[![Coverage](https://img.shields.io/codecov/c/github/orchestratora/ngx-testing.svg?maxAge=2592000)](https://codecov.io/gh/orchestratora/ngx-testing)
+[![Npm](https://img.shields.io/npm/v/@orchestrator/ngx-testing.svg)](https://www.npmjs.com/package/@orchestrator/ngx-testing)
+[![Npm Downloads](https://img.shields.io/npm/dt/@orchestrator/ngx-testing.svg)](https://www.npmjs.com/package/@orchestrator/ngx-testing)
+![Licence](https://img.shields.io/github/license/orchestratora/ngx-testing.svg)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+
 > Testing utilities for Angular projects
 
 `npm install -D @orchestrator/ngx-testing`
