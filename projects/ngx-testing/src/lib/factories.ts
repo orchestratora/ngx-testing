@@ -5,6 +5,10 @@ import { Host } from './host';
 import { HostComponentService } from './host-component.service';
 import { HostDirectiveService } from './host-directive.service';
 import { NgxTestingModule } from './ngx-testing.module';
+import {
+  TestingComponentModuleExtras,
+  TestingDirectiveModuleExtras,
+} from './types';
 
 export interface TestingFactory<T, H extends Host> {
   testModule: NgxTestingModule<T>;
@@ -14,8 +18,9 @@ export interface TestingFactory<T, H extends Host> {
 
 export function getTestingForComponent<T>(
   type: Type<T>,
+  extras?: TestingComponentModuleExtras,
 ): TestingFactory<T, HostComponentService<T>> {
-  const testModule = NgxTestingModule.forComponent<T>(type);
+  const testModule = NgxTestingModule.forComponent<T>(type, extras);
   const getHost = () =>
     TestBed.get(HostComponentService) as HostComponentService<T>;
   const createComponent = () =>
@@ -28,8 +33,9 @@ export function getTestingForComponent<T>(
 
 export function getTestingForDirective<T>(
   type: Type<T>,
+  extras?: TestingDirectiveModuleExtras,
 ): TestingFactory<T, HostDirectiveService<T>> {
-  const testModule = NgxTestingModule.forDirective<T>(type);
+  const testModule = NgxTestingModule.forDirective<T>(type, extras);
   const getHost = () =>
     TestBed.get(HostDirectiveService) as HostDirectiveService<T>;
   const createComponent = () =>
