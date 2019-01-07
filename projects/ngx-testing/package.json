@@ -1,5 +1,5 @@
 {
-  "name": "ngx-testing",
+  "name": "@orchestrator/ngx-testing",
   "version": "0.0.0-develop",
   "peerDependencies": {
     "@angular/common": "^7.0.0",
