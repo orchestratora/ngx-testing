@@ -20,7 +20,7 @@
     "format:code": "prettier --write \"projects/**/*.{ts,js,json,?css}\"",
     "format:html": "prettyhtml \"projects/**/*.html\"",
     "presemantic-release": "npm run build",
-    "semantic-release": "cd dist/ngx-testing && semantic-release"
+    "semantic-release": "semantic-release"
   },
   "private": true,
   "dependencies": {
@@ -101,6 +101,19 @@
     "projects/**/*.html": [
       "prettyhtml",
       "git add"
+    ]
+  },
+  "release": {
+    "publish": [
+      {
+        "path": "@semantic-release/npm",
+        "pkgRoot": "dist/ngx-testing",
+        "tarballDir": "dist-tar"
+      },
+      {
+        "path": "@semantic-release/github",
+        "assets": "dist-tar/*.tgz"
+      }
     ]
   }
 }
