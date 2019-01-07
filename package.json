@@ -19,6 +19,7 @@
     "format": "npm-run-all -p format:*",
     "format:code": "prettier --write \"projects/**/*.{ts,js,json,?css}\"",
     "format:html": "prettyhtml \"projects/**/*.html\"",
+    "presemantic-release": "npm run build",
     "semantic-release": "cd dist/ngx-testing && semantic-release"
   },
   "private": true,
