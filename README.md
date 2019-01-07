@@ -97,7 +97,7 @@ describe('MyComponent', () => {
 });
 ```
 
-For more examples visit [example-component.spec.ts](projects\ngx-testing\src\lib\example-component.spec.ts).
+For more examples visit [example-component.spec.ts](projects/ngx-testing/src/lib/example-component.spec.ts).
 
 ## Build
 
