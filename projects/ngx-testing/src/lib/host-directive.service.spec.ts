@@ -18,7 +18,10 @@ describe('Service: HostDirective', () => {
       providers: [
         HostDirectiveService,
         HostGeneratorServiceMock,
-        { provide: HostGeneratorService, useExisting: HostGeneratorServiceMock },
+        {
+          provide: HostGeneratorService,
+          useExisting: HostGeneratorServiceMock,
+        },
         TestTypeTokenMock,
         { provide: TestTypeToken, useExisting: TestTypeTokenMock },
       ],

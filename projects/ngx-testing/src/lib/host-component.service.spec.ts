@@ -18,7 +18,10 @@ describe('Service: HostComponent', () => {
       providers: [
         HostComponentService,
         HostGeneratorServiceMock,
-        { provide: HostGeneratorService, useExisting: HostGeneratorServiceMock },
+        {
+          provide: HostGeneratorService,
+          useExisting: HostGeneratorServiceMock,
+        },
         TestTypeTokenMock,
         { provide: TestTypeToken, useExisting: TestTypeTokenMock },
       ],
@@ -51,7 +54,9 @@ describe('Service: HostComponent', () => {
 
   describe('component prop', () => {
     it('should return `this.element.componentInstance`', () => {
-      spyOn(getService(), 'query').and.returnValue({ componentInstance: 'instance' });
+      spyOn(getService(), 'query').and.returnValue({
+        componentInstance: 'instance',
+      });
 
       expect(getService().component).toBe('instance');
     });

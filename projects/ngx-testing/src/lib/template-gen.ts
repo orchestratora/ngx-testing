@@ -46,7 +46,8 @@ export function genInputsTplStar(
   const inputsTpl = inputs
     .filter(({ templateName }) => templateName !== binding)
     .map(
-      ({ templateName, propName }) => `${templateName.replace(binding, '')}: ${propName}`,
+      ({ templateName, propName }) =>
+        `${templateName.replace(binding, '')}: ${propName}`,
     )
     .join('; ');
 
@@ -75,6 +76,8 @@ export function genInputsTpl(inputs: TemplateBindings): string {
  */
 export function genOutputsTpl(outputs: TemplateBindings): string {
   return outputs
-    .map(({ templateName, propName }) => `(${templateName})="${propName}($event)"`)
+    .map(
+      ({ templateName, propName }) => `(${templateName})="${propName}($event)"`,
+    )
     .join(' ');
 }

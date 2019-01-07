@@ -15,7 +15,9 @@ export const TestTypeToken = new InjectionToken<Type<any>>('TestTypeToken');
 /**
  * @internal
  */
-export const TestTypeKindToken = new InjectionToken<TestTypeKind>('TestTypeKindToken');
+export const TestTypeKindToken = new InjectionToken<TestTypeKind>(
+  'TestTypeKindToken',
+);
 
 /**
  * @internal

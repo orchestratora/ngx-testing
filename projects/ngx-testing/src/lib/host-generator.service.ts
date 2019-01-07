@@ -16,7 +16,12 @@ import {
   TestTypeKindToken,
   TestTypeToken,
 } from './tokens';
-import { AsHostComponent, DirectiveIO, HostComponent, TestTypeKind } from './types';
+import {
+  AsHostComponent,
+  DirectiveIO,
+  HostComponent,
+  TestTypeKind,
+} from './types';
 import { getDirectiveIO } from './util';
 
 /**
@@ -31,7 +36,10 @@ export class HostGeneratorService {
   private typeKind = this.injector.get(TestTypeKindToken);
   private extraConfig = this.injector.get(ExtraConfigToken);
 
-  constructor(private cfr: ComponentFactoryResolver, private injector: Injector) {}
+  constructor(
+    private cfr: ComponentFactoryResolver,
+    private injector: Injector,
+  ) {}
 
   generateModuleFor(host: Type<any>): Type<any> {
     const testModule = this.testModule;
@@ -85,10 +93,13 @@ export class HostGeneratorService {
 
     const selector = `host-directive`;
     const templateTag = this.extraConfig.hostComponent
-      ? this.cfr.resolveComponentFactory(this.extraConfig.hostComponent).selector
+      ? this.cfr.resolveComponentFactory(this.extraConfig.hostComponent)
+          .selector
       : this.extraConfig.hostTag;
 
-    const template = templateTag ? this.genDirectiveTemplate(templateTag, io) : '';
+    const template = templateTag
+      ? this.genDirectiveTemplate(templateTag, io)
+      : '';
 
     return this.genComponent({ selector, template }, dirType, io);
   }

@@ -34,7 +34,9 @@ describe('Service: HostGenerator', () => {
 
   describe('generateModuleFor() method', () => {
     it('should return new type', () => {
-      expect(getService().generateModuleFor(class {})).toEqual(jasmine.any(Function));
+      expect(getService().generateModuleFor(class {})).toEqual(
+        jasmine.any(Function),
+      );
     });
   });
 
@@ -49,7 +51,9 @@ describe('Service: HostGenerator', () => {
 
     describe('when `TestTypeKindToken` is `TestTypeKind.Component`', () => {
       it('should call `this.generateForComponent()` and return result', () => {
-        TestBed.overrideProvider(TestTypeKindToken, { useValue: TestTypeKind.Component });
+        TestBed.overrideProvider(TestTypeKindToken, {
+          useValue: TestTypeKind.Component,
+        });
         spyOn(getService(), 'generateForComponent').and.returnValue('res');
 
         expect(getService().generate()).toBe('res');
@@ -59,7 +63,9 @@ describe('Service: HostGenerator', () => {
 
     describe('when `TestTypeKindToken` is `TestTypeKind.Directive`', () => {
       it('should call `this.generateForDirective()` and return result', () => {
-        TestBed.overrideProvider(TestTypeKindToken, { useValue: TestTypeKind.Directive });
+        TestBed.overrideProvider(TestTypeKindToken, {
+          useValue: TestTypeKind.Directive,
+        });
         spyOn(getService(), 'generateForDirective').and.returnValue('res');
 
         expect(getService().generate()).toBe('res');
@@ -73,7 +79,9 @@ describe('Service: HostGenerator', () => {
       spyOn(getService(), 'genForComponent').and.returnValue('res');
 
       expect(getService().generateForComponent()).toBe('res');
-      expect(getService().genForComponent).toHaveBeenCalledWith(util.get(TestTypeToken));
+      expect(getService().genForComponent).toHaveBeenCalledWith(
+        util.get(TestTypeToken),
+      );
     });
   });
 
@@ -82,14 +90,18 @@ describe('Service: HostGenerator', () => {
       spyOn(getService(), 'genForDirective').and.returnValue('res');
 
       expect(getService().generateForDirective()).toBe('res');
-      expect(getService().genForDirective).toHaveBeenCalledWith(util.get(TestTypeToken));
+      expect(getService().genForDirective).toHaveBeenCalledWith(
+        util.get(TestTypeToken),
+      );
     });
   });
 
   describe('genForComponent() method', () => {
     it('should call `this.genComponent()` with resolved metadata from type', () => {
       const factory = { selector: 'selector', inputs: [], outputs: [] };
-      const resolveComponentFactory = jasmine.createSpy().and.returnValue(factory);
+      const resolveComponentFactory = jasmine
+        .createSpy()
+        .and.returnValue(factory);
 
       class Type {}
 
@@ -101,16 +113,23 @@ describe('Service: HostGenerator', () => {
         },
       });
 
-      const genHostCompTpl = spyOn(tplGen, 'genHostCompTpl').and.returnValue('template');
-      const genComponent = spyOn(getService() as any, 'genComponent').and.returnValue(
-        'res',
+      const genHostCompTpl = spyOn(tplGen, 'genHostCompTpl').and.returnValue(
+        'template',
       );
+      const genComponent = spyOn(
+        getService() as any,
+        'genComponent',
+      ).and.returnValue('res');
 
       expect(getService().genForComponent(Type)).toBe('res');
       expect(
         TestBed.get(ComponentFactoryResolver).resolveComponentFactory,
       ).toHaveBeenCalledWith(Type);
-      expect(genHostCompTpl).toHaveBeenCalledWith('selector', factory, 'content');
+      expect(genHostCompTpl).toHaveBeenCalledWith(
+        'selector',
+        factory,
+        'content',
+      );
       expect(genComponent).toHaveBeenCalledWith(
         {
           selector: 'host-selector',
@@ -126,7 +145,9 @@ describe('Service: HostGenerator', () => {
     describe('when `ExtraConfigToken.hostComponent` provided', () => {
       it('should call `this.genComponent()` with resolved metadata from type', () => {
         const factory = { selector: 'selector', inputs: [], outputs: [] };
-        const resolveComponentFactory = jasmine.createSpy().and.returnValue(factory);
+        const resolveComponentFactory = jasmine
+          .createSpy()
+          .and.returnValue(factory);
 
         class Type {}
         class HostType {}
@@ -142,10 +163,13 @@ describe('Service: HostGenerator', () => {
         });
 
         const dirIO = { inputs: [], outputs: [] };
-        const getDirectiveIO = spyOn(util, 'getDirectiveIO').and.returnValue(dirIO);
-        const genComponent = spyOn(getService() as any, 'genComponent').and.returnValue(
-          'res',
+        const getDirectiveIO = spyOn(util, 'getDirectiveIO').and.returnValue(
+          dirIO,
         );
+        const genComponent = spyOn(
+          getService() as any,
+          'genComponent',
+        ).and.returnValue('res');
         const genHostCompTpl = spyOn(tplGen, 'genHostCompTpl').and.returnValue(
           'template',
         );

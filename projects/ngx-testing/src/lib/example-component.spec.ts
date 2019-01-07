@@ -18,7 +18,9 @@ declare module './output-mock' {
   interface OutputMock extends jasmine.Spy {}
 }
 
-setOutputMock((name, compName) => jasmine.createSpy(`Spy [${compName}].${name}`));
+setOutputMock((name, compName) =>
+  jasmine.createSpy(`Spy [${compName}].${name}`),
+);
 
 @Component({ selector: 'ngt-my', template: 'Text is {{computed}}' })
 class MyComponent implements OnInit, OnChanges {
@@ -74,7 +76,9 @@ describe('Example Tests: MyComponent', () => {
       });
       fixture.detectChanges();
 
-      expect(fixture.nativeElement.textContent).toBe(`Text is 'new' was 'whatever'`);
+      expect(fixture.nativeElement.textContent).toBe(
+        `Text is 'new' was 'whatever'`,
+      );
     });
 
     it('should emit `customEvent` when `doSomething()` called', async () => {

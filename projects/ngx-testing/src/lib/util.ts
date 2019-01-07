@@ -9,7 +9,10 @@ import { DirectiveIO } from './types';
 export function getDirectiveIO<T>(dirType: Type<T>): DirectiveIO {
   const { inputs, outputs } = (dirType as any).ngBaseDef;
   const defToIO = def =>
-    Object.keys(def).map(key => ({ propName: key, templateName: def[key] || key }));
+    Object.keys(def).map(key => ({
+      propName: key,
+      templateName: def[key] || key,
+    }));
 
   return {
     inputs: defToIO(inputs),
