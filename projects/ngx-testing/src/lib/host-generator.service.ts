@@ -103,9 +103,8 @@ export class HostGeneratorService {
       : this.extraConfig.hostTag;
 
     const template =
-      this.extraConfig.template || templateTag
-        ? this.genDirectiveTemplate(templateTag, io)
-        : '';
+      this.extraConfig.template ||
+      (templateTag ? this.genDirectiveTemplate(templateTag, io) : '');
 
     return this.genComponent({ selector, template }, dirType, io);
   }
