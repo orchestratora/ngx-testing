@@ -79,11 +79,13 @@ export class HostGeneratorService {
   genForComponent<T>(compType: Type<T>): Type<AsHostComponent<T>> {
     const factory = this.cfr.resolveComponentFactory(compType);
     const selector = `host-${factory.selector}`;
-    const template = genHostCompTpl(
-      factory.selector,
-      factory,
-      this.extraConfig.projectContent,
-    );
+    const template =
+      this.extraConfig.template ||
+      genHostCompTpl(
+        factory.selector,
+        factory,
+        this.extraConfig.projectContent,
+      );
 
     return this.genComponent({ selector, template }, compType, factory);
   }
@@ -92,14 +94,18 @@ export class HostGeneratorService {
     const io = getDirectiveIO(dirType);
 
     const selector = `host-directive`;
-    const templateTag = this.extraConfig.hostComponent
+
+    const templateTag = this.extraConfig.template
+      ? ''
+      : this.extraConfig.hostComponent
       ? this.cfr.resolveComponentFactory(this.extraConfig.hostComponent)
           .selector
       : this.extraConfig.hostTag;
 
-    const template = templateTag
-      ? this.genDirectiveTemplate(templateTag, io)
-      : '';
+    const template =
+      this.extraConfig.template || templateTag
+        ? this.genDirectiveTemplate(templateTag, io)
+        : '';
 
     return this.genComponent({ selector, template }, dirType, io);
   }

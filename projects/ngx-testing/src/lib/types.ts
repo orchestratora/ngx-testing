@@ -9,6 +9,7 @@ import {
 import { OutputMock } from './output-mock';
 
 export interface TestingModuleExtras {
+  template?: string;
   projectContent?: string;
 }
 
