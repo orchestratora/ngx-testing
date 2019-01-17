@@ -99,6 +99,23 @@ describe('MyComponent', () => {
 
 For more examples visit [example-component.spec.ts](projects/ngx-testing/src/lib/example-component.spec.ts).
 
+### Providing custom config for NgModule
+
+Sometimes you will need to provide extra config for your component/directive under test
+so it can work in isolated unit test. You can do this like so:
+
+```ts
+import { getTestingForComponent, getTestingForDirective } from '@orchestrator/ngx-testing';
+
+// For component
+getTestingForComponent(YourComponent, { ngModule: { imports: [...], providers: [...] } });
+
+// For directive
+getTestingForDirective(YourDirective, { ngModule: { imports: [...], providers: [...] } });
+```
+
+_NOTE:_ `ngModule` prop in second argument is default config for `@NgModule`.
+
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.

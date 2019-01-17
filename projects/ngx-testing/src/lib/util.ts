@@ -26,3 +26,17 @@ export function getDirectiveIO<T>(dirType: Type<T>): DirectiveIO {
 export function get<T>(type: Type<T> | InjectionToken<T>): T {
   return TestBed.get(type);
 }
+
+/**
+ * @internal
+ */
+export function mergeArrays<T>(...arrays: T[][]): T[] {
+  return arrays.reduce((acc, arr) => [...acc, ...toArray(arr)], []);
+}
+
+/**
+ * @internal
+ */
+export function toArray<T>(arr?: T[]): T[] {
+  return arr ? arr : [];
+}

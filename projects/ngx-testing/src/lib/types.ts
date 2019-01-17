@@ -2,7 +2,7 @@ import {
   ComponentFactory,
   DebugElement,
   EventEmitter,
-  NgModuleFactory,
+  NgModule,
   Type,
 } from '@angular/core';
 
@@ -11,6 +11,7 @@ import { OutputMock } from './output-mock';
 export interface TestingModuleExtras {
   template?: string;
   projectContent?: string;
+  ngModule?: NgModule;
 }
 
 // tslint:disable-next-line:no-empty-interface

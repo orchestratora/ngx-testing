@@ -12,6 +12,7 @@ import {
   TestingDirectiveModuleExtras,
   TestTypeKind,
 } from './types';
+import { mergeArrays } from './util';
 
 @NgModule({
   imports: [CommonModule],
@@ -22,7 +23,7 @@ export class NgxTestingModule<T = any> {
     compType: Type<T>,
     extras: TestingComponentModuleExtras = {},
   ): ModuleWithProviders<NgxTestingModule<T>> {
-    const testModule = getTestingModuleFor(compType, compType);
+    const testModule = getTestingModuleFor(compType, compType, extras.ngModule);
     return {
       ngModule: testModule,
       providers: [
@@ -38,7 +39,11 @@ export class NgxTestingModule<T = any> {
     dirType: Type<T>,
     extras: TestingDirectiveModuleExtras = {},
   ): ModuleWithProviders<NgxTestingModule<T>> {
-    const testModule = getTestingModuleFor(dirType, extras.hostComponent);
+    const testModule = getTestingModuleFor(
+      dirType,
+      extras.hostComponent,
+      extras.ngModule,
+    );
     return {
       ngModule: testModule,
       providers: [
@@ -51,12 +56,18 @@ export class NgxTestingModule<T = any> {
   }
 }
 
-function getTestingModuleFor<T>(type: Type<T>, entryType?: Type<any>) {
+function getTestingModuleFor<T>(
+  type: Type<T>,
+  entryType?: Type<any>,
+  extra: NgModule = {},
+) {
   @NgModule({
-    imports: [NgxTestingModule],
-    exports: [NgxTestingModule, type],
-    declarations: [type],
-    entryComponents: entryType ? [entryType] : [],
+    imports: mergeArrays(extra.imports, [NgxTestingModule]),
+    exports: mergeArrays(extra.exports, [NgxTestingModule, type]),
+    declarations: mergeArrays(extra.declarations, [type]),
+    entryComponents: entryType
+      ? mergeArrays(extra.entryComponents, [entryType])
+      : extra.entryComponents,
   })
   class TestingModule<D> {}
   return TestingModule as Type<TestingModule<T>>;
