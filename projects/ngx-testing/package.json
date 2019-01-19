@@ -1,13 +1,26 @@
 {
   "name": "@orchestrator/ngx-testing",
   "version": "0.0.0-develop",
+  "description": "Testing utilities for Angular projects",
+  "maintainers": [
+    "Alex Malkevich <malkevich.alex@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/orchestratora/ngx-testing.git"
+  },
+  "keywords": [
+    "angular",
+    "testing",
+    "utilities",
+    "component",
+    "autogenration",
+    "templates",
+    "bindings"
+  ],
   "peerDependencies": {
     "@angular/common": "^7.0.0",
     "@angular/core": "^7.0.0",
     "@angular/platform-browser": "^7.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/orchestratora/ngx-testing.git"
   }
 }
