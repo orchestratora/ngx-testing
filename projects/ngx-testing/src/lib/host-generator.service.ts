@@ -48,6 +48,9 @@ export class HostGeneratorService {
       declarations: [host],
       exports: [host],
       entryComponents: [host],
+      schemas: this.extraConfig.ngModule
+        ? this.extraConfig.ngModule.schemas
+        : [],
     })
     class TestModule {}
     return TestModule;

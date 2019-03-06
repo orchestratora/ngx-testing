@@ -68,6 +68,7 @@ function getTestingModuleFor<T>(
     entryComponents: entryType
       ? mergeArrays(extra.entryComponents, [entryType])
       : extra.entryComponents,
+    schemas: extra.schemas,
   })
   class TestingModule<D> {}
   return TestingModule as Type<TestingModule<T>>;
