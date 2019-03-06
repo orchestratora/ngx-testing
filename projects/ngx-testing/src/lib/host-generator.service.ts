@@ -43,16 +43,17 @@ export class HostGeneratorService {
 
   generateModuleFor(host: Type<any>): Type<any> {
     const testModule = this.testModule;
+    const ngModule = this.extraConfig.ngModule;
+
     @NgModule({
       imports: [testModule],
       declarations: [host],
       exports: [host],
       entryComponents: [host],
-      schemas: this.extraConfig.ngModule
-        ? this.extraConfig.ngModule.schemas
-        : [],
+      schemas: ngModule ? ngModule.schemas : [],
     })
     class TestModule {}
+
     return TestModule;
   }
 
