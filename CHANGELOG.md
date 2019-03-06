@@ -1,5 +1,13 @@
 # NgxTesting - Changelog
 
+## [1.2.2](https://github.com/orchestratora/ngx-testing/compare/v1.2.1...v1.2.2) (2019-03-06)
+
+
+### Bug Fixes
+
+* **host-gen:** do not use this in generated test module ([fbfda9a](https://github.com/orchestratora/ngx-testing/commit/fbfda9a))
+* **module:** accept schemas from ngModule extra config ([c08d2f6](https://github.com/orchestratora/ngx-testing/commit/c08d2f6))
+
 ## [1.2.1](https://github.com/orchestratora/ngx-testing/compare/v1.2.0...v1.2.1) (2019-01-19)
 
 ### Bug Fixes
