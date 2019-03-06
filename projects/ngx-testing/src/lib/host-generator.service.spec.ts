@@ -1,7 +1,10 @@
 import { ComponentFactoryResolver } from '@angular/core';
+import * as ngCore from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
+import { spyOnModule } from '../../test/spy-on-module';
 import { HostGeneratorService } from './host-generator.service';
+import * as tplGen from './template-gen';
 import {
   ExtraConfigToken,
   TestModuleToken,
@@ -10,7 +13,6 @@ import {
 } from './tokens';
 import { TestTypeKind } from './types';
 import * as util from './util';
-import * as tplGen from './template-gen';
 
 class TestModuleTokenMock {}
 class TestTypeTokenMock {}
@@ -33,9 +35,72 @@ describe('Service: HostGenerator', () => {
   });
 
   describe('generateModuleFor() method', () => {
+    let ngModule: jasmine.Spy;
+
+    beforeEach(() => {
+      getService();
+      ngModule = spyOnModule(ngCore, 'NgModule');
+    });
+
     it('should return new type', () => {
       expect(getService().generateModuleFor(class {})).toEqual(
         jasmine.any(Function),
+      );
+    });
+
+    it('should import `this.testModule`', () => {
+      getService().generateModuleFor(class {});
+
+      expect(ngModule).toHaveBeenCalledWith(
+        jasmine.objectContaining({
+          imports: [TestModuleTokenMock],
+        }),
+      );
+    });
+
+    it('should declare `host`', () => {
+      const host = class {};
+      getService().generateModuleFor(host);
+
+      expect(ngModule).toHaveBeenCalledWith(
+        jasmine.objectContaining({
+          declarations: [host],
+        }),
+      );
+    });
+
+    it('should export `host`', () => {
+      const host = class {};
+      getService().generateModuleFor(host);
+
+      expect(ngModule).toHaveBeenCalledWith(
+        jasmine.objectContaining({
+          exports: [host],
+        }),
+      );
+    });
+
+    it('should set `host` as entryComponents', () => {
+      const host = class {};
+      getService().generateModuleFor(host);
+
+      expect(ngModule).toHaveBeenCalledWith(
+        jasmine.objectContaining({
+          entryComponents: [host],
+        }),
+      );
+    });
+
+    it('should set schemas from `this.extraConfig.ngModule.schemas`', () => {
+      const extraConfig = TestBed.get(ExtraConfigToken);
+      extraConfig.ngModule = { schemas: 'schema' };
+
+      getService().generateModuleFor(class {});
+
+      expect(ngModule).toHaveBeenCalledWith(
+        jasmine.objectContaining({
+          schemas: 'schema',
+        }),
       );
     });
   });
