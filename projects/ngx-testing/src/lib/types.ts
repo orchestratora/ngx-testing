@@ -42,6 +42,9 @@ export type AsHostComponent<T> = HostComponent<T> &
   { [K in keyof T]: T[K] extends EventEmitter<infer A> ? OutputMock<A> : T[K] };
 
 export type TemplateBindings = ComponentFactory<any>['inputs'];
+export type TemplateBinding = TemplateBindings extends Array<infer T>
+  ? T
+  : unknown;
 
 export interface DirectiveIO {
   inputs: TemplateBindings;
