@@ -9,7 +9,7 @@
 
 > Testing utilities for Angular projects
 
-`npm install -D @orchestrator/ngx-testing`
+`npm install -D @orchestrator/ngx-testing@next`
 
 ## Why?
 
