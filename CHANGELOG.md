@@ -1,5 +1,24 @@
 # NgxTesting - Changelog
 
+# [2.0.0](https://github.com/orchestratora/ngx-testing/compare/v1.2.2...v2.0.0) (2019-06-12)
+
+
+### Bug Fixes
+
+* **host:** update how directive IO metadata resolved ([9c379cd](https://github.com/orchestratora/ngx-testing/commit/9c379cd))
+* **ng:** update to stable Angular v8 ([09a618e](https://github.com/orchestratora/ngx-testing/commit/09a618e))
+* **util:** remove extra filtering when getting directive IO ([ebbaba7](https://github.com/orchestratora/ngx-testing/commit/ebbaba7))
+
+
+### Features
+
+* **ng:** update to Angular v8 ([a54df12](https://github.com/orchestratora/ngx-testing/commit/a54df12))
+
+
+### BREAKING CHANGES
+
+* **ng:** Only major version of Angular updated. Public APIs are same.
+
 ## [1.2.2](https://github.com/orchestratora/ngx-testing/compare/v1.2.1...v1.2.2) (2019-03-06)
 
 
