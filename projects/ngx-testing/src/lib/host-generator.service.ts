@@ -65,9 +65,7 @@ export class HostGeneratorService {
         return this.generateForDirective<T>();
       default:
         throw Error(
-          `HostGeneratorService: Cannot generate host component for unknown kind: ${
-            this.typeKind
-          }`,
+          `HostGeneratorService: Cannot generate host component for unknown kind: ${this.typeKind}`,
         );
     }
   }
