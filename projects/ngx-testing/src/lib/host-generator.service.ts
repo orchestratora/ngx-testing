@@ -65,9 +65,7 @@ export class HostGeneratorService {
         return this.generateForDirective<T>();
       default:
         throw Error(
-          `HostGeneratorService: Cannot generate host component for unknown kind: ${
-            this.typeKind
-          }`,
+          `HostGeneratorService: Cannot generate host component for unknown kind: ${this.typeKind}`,
         );
     }
   }
@@ -139,7 +137,7 @@ export class HostGeneratorService {
 
     @Component(meta)
     class TestHostComponent implements HostComponent<T> {
-      @ViewChild(type)
+      @ViewChild(type, { static: false })
       instance: T;
 
       constructor() {
