@@ -1,5 +1,12 @@
 # NgxTesting - Changelog
 
+# [2.1.0](https://github.com/orchestratora/ngx-testing/compare/v2.0.0...v2.1.0) (2019-08-17)
+
+
+### Features
+
+* **modules:** add functions to create `NgModules`s in isolation ([a3c2d3f](https://github.com/orchestratora/ngx-testing/commit/a3c2d3f))
+
 # [2.0.0](https://github.com/orchestratora/ngx-testing/compare/v1.2.2...v2.0.0) (2019-06-12)
 
 
