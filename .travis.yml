@@ -20,7 +20,7 @@ jobs:
   include:
     - stage: test
       script:
-        - run-p test:ci lint build
+        - run-p test:ci lint build:prod
         - npm run test:report
     - stage: release
       node_js: lts/*

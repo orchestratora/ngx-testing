@@ -14,6 +14,11 @@
           "options": {
             "tsConfig": "projects/ngx-testing/tsconfig.lib.json",
             "project": "projects/ngx-testing/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-testing/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -31,9 +36,7 @@
               "projects/ngx-testing/tsconfig.lib.json",
               "projects/ngx-testing/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }

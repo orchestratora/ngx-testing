@@ -137,7 +137,7 @@ export class HostGeneratorService {
 
     @Component(meta)
     class TestHostComponent implements HostComponent<T> {
-      @ViewChild(type, { static: false })
+      @ViewChild(type)
       instance: T;
 
       constructor() {
