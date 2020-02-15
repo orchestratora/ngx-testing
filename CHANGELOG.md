@@ -1,5 +1,12 @@
 # NgxTesting - Changelog
 
+# [3.0.0-next.2](https://github.com/orchestratora/ngx-testing/compare/v3.0.0-next.1...v3.0.0-next.2) (2020-02-15)
+
+
+### Bug Fixes
+
+* **package:** require Angular >= v8 as peer dependency ([2558fec](https://github.com/orchestratora/ngx-testing/commit/2558fecbb8eeba3937a6533737ef577566c27cca))
+
 # [3.0.0-next.1](https://github.com/orchestratora/ngx-testing/compare/v2.1.0...v3.0.0-next.1) (2020-02-15)
 
 
