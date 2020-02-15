@@ -8,19 +8,12 @@ import {
   SimpleChange,
   SimpleChanges,
 } from '@angular/core';
-import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { async, TestBed } from '@angular/core/testing';
 
 import { getTestingForComponent } from './factories';
 import { setOutputMock } from './output-mock';
 
-declare module './output-mock' {
-  // tslint:disable-next-line:no-empty-interface
-  interface OutputMock extends jasmine.Spy {}
-}
-
-setOutputMock((name, compName) =>
-  jasmine.createSpy(`Spy [${compName}].${name}`),
-);
+setOutputMock(() => jest.fn());
 
 @Component({ selector: 'ngt-my', template: 'Text is {{computed}}' })
 class MyComponent implements OnInit, OnChanges {
@@ -85,7 +78,7 @@ describe('Example Tests: MyComponent', () => {
       await TestBed.compileComponents();
       const fixture = TestBed.createComponent(MyComponent);
 
-      const callback = jasmine.createSpy('customEvent spy');
+      const callback = jest.fn();
       fixture.componentInstance.customEvent.subscribe(callback);
 
       fixture.componentInstance.doSomething();

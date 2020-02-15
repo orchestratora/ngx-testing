@@ -26,8 +26,9 @@
           "options": {}
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
+            "eslintConfig": ".eslintrc.js",
             "tsConfig": [
               "projects/ngx-testing/tsconfig.lib.json",
               "projects/ngx-testing/tsconfig.spec.json"

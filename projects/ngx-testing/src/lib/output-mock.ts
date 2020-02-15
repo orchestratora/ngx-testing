@@ -1,6 +1,6 @@
 import { Type } from '@angular/core';
 
-// tslint:disable-next-line:no-empty-interface
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface OutputMock<T = any> {}
 
 export type OutputMockFactory<T = any> = (

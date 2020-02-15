@@ -2,7 +2,6 @@ import {
   Compiler,
   DebugElement,
   Injector,
-  NgModuleFactory,
   OnDestroy,
   Type,
 } from '@angular/core';

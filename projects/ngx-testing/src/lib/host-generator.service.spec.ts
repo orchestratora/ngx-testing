@@ -58,34 +58,34 @@ describe('Service: HostGenerator', () => {
     });
 
     it('should declare `host`', () => {
-      const host = class {};
-      getService().generateModuleFor(host);
+      class Host {}
+      getService().generateModuleFor(Host);
 
       expect(ngModule).toHaveBeenCalledWith(
         jasmine.objectContaining({
-          declarations: [host],
+          declarations: [Host],
         }),
       );
     });
 
     it('should export `host`', () => {
-      const host = class {};
-      getService().generateModuleFor(host);
+      class Host {}
+      getService().generateModuleFor(Host);
 
       expect(ngModule).toHaveBeenCalledWith(
         jasmine.objectContaining({
-          exports: [host],
+          exports: [Host],
         }),
       );
     });
 
     it('should set `host` as entryComponents', () => {
-      const host = class {};
-      getService().generateModuleFor(host);
+      class Host {}
+      getService().generateModuleFor(Host);
 
       expect(ngModule).toHaveBeenCalledWith(
         jasmine.objectContaining({
-          entryComponents: [host],
+          entryComponents: [Host],
         }),
       );
     });

@@ -14,7 +14,7 @@ export interface TestingModuleExtras {
   ngModule?: NgModule;
 }
 
-// tslint:disable-next-line:no-empty-interface
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface TestingComponentModuleExtras extends TestingModuleExtras {}
 
 export interface TestingDirectiveModuleExtras extends TestingModuleExtras {

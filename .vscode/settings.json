@@ -2,6 +2,7 @@
   "typescript.tsdk": "node_modules\\typescript\\lib",
   "workbench.colorCustomizations": {
     "activityBar.background": "#1d2f40",
+    "activityBar.activeBorder": "#9a4671",
     "activityBar.foreground": "#e7e7e7",
     "activityBar.inactiveForeground": "#e7e7e799",
     "activityBarBadge.background": "#9a4671",
