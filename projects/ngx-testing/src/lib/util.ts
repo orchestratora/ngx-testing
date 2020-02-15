@@ -53,13 +53,10 @@ function filterPropMeta(
   obj: PropMetadata,
   type: 'Input' | 'Output',
 ): IOMetadata {
-  return Object.keys(obj).reduce(
-    (acc, k) => {
-      const meta = obj[k].find(m => m.ngMetadataName === type);
-      return meta ? { ...acc, [k]: meta } : acc;
-    },
-    {} as IOMetadata,
-  );
+  return Object.keys(obj).reduce((acc, k) => {
+    const meta = obj[k].find(m => m.ngMetadataName === type);
+    return meta ? { ...acc, [k]: meta } : acc;
+  }, {} as IOMetadata);
 }
 
 /**
