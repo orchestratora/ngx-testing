@@ -14,26 +14,26 @@
           "options": {
             "tsConfig": "projects/ngx-testing/tsconfig.lib.json",
             "project": "projects/ngx-testing/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-testing/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/ngx-testing/src/test.ts",
-            "tsConfig": "projects/ngx-testing/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-testing/karma.conf.js"
-          }
+          "builder": "@angular-builders/jest:run",
+          "options": {}
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
+            "eslintConfig": ".eslintrc.js",
             "tsConfig": [
               "projects/ngx-testing/tsconfig.lib.json",
               "projects/ngx-testing/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
