@@ -34,8 +34,8 @@ describe('Service: HostDirective', () => {
 
   describe('directive prop', () => {
     it('should return `this.hostComponent.instance`', () => {
-      spyOnProperty(getService(), 'hostComponent').and.returnValue({
-        instance: 'instance',
+      Object.defineProperty(getService(), 'hostComponent', {
+        value: { instance: 'instance' },
       });
 
       expect(getService().directive).toBe('instance');

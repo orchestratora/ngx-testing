@@ -45,9 +45,9 @@ describe('CreateModule', () => {
         ),
     };
 
-    spyOnProperty(getTestBed().platform, 'injector').and.returnValue(
-      injectorMock,
-    );
+    Object.defineProperty(getTestBed().platform, 'injector', {
+      value: injectorMock,
+    });
   });
 
   afterEach(_reset);
