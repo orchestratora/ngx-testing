@@ -1,5 +1,17 @@
 # NgxTesting - Changelog
 
+# [3.0.0-next.1](https://github.com/orchestratora/ngx-testing/compare/v2.1.0...v3.0.0-next.1) (2020-02-15)
+
+
+### Features
+
+* **ng:** update to Angular v9 ([d0aa004](https://github.com/orchestratora/ngx-testing/commit/d0aa0044ba0d1e71ac6639a61d2493621087f253))
+
+
+### BREAKING CHANGES
+
+* **ng:** Now library is compiled with Angular v9
+
 # [2.1.0](https://github.com/orchestratora/ngx-testing/compare/v2.0.0...v2.1.0) (2019-08-17)
 
 
