@@ -9,7 +9,6 @@
     "ct": "git-cz",
     "ng": "ng",
     "start": "ng serve",
-    "prebuild": "rimraf dist",
     "build": "ng build",
     "build:prod": "ng build --prod",
     "test": "ng test --watch=false",
@@ -19,8 +18,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "format": "prettier --write \"projects/**/*.{ts,js,json,?css,html}\"",
+    "format:check": "prettier --check \"projects/**/*.{ts,js,json,?css,html}\"",
     "pack": "copyfiles LICENSE README.md dist/ngx-testing",
-    "presemantic-release": "npm run build && npm run pack",
+    "presemantic-release": "npm run pack",
     "semantic-release": "semantic-release"
   },
   "private": true,
