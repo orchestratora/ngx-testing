@@ -95,7 +95,7 @@ export class HostGeneratorService {
   genForDirective<T>(dirType: Type<T>): Type<AsHostComponent<T>> {
     const io = getDirectiveIO(dirType);
 
-    const selector = `host-directive`;
+    const selector = 'host-directive';
 
     const templateTag = this.extraConfig.template
       ? ''
@@ -133,15 +133,16 @@ export class HostGeneratorService {
     type: Type<T>,
     io: DirectiveIO,
   ): Type<AsHostComponent<T>> {
-    const that = this;
+    // eslint-disable-next-line @typescript-eslint/no-this-alias
+    const hostGeneratorService = this;
 
     @Component(meta)
     class TestHostComponent implements HostComponent<T> {
-      @ViewChild(type, { static: false })
+      @ViewChild(type)
       instance: T;
 
       constructor() {
-        that.initComponent(type, this, io);
+        hostGeneratorService.initComponent(type, this, io);
       }
     }
 

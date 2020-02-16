@@ -9,7 +9,7 @@ import {
 } from './create-module';
 
 class ModuleFactoryMock {
-  create = jasmine.createSpy();
+  create = jest.fn();
 }
 
 class CompilerMock {
@@ -45,9 +45,9 @@ describe('CreateModule', () => {
         ),
     };
 
-    spyOnProperty(getTestBed().platform, 'injector').and.returnValue(
-      injectorMock,
-    );
+    Object.defineProperty(getTestBed().platform, 'injector', {
+      value: injectorMock,
+    });
   });
 
   afterEach(_reset);
@@ -80,7 +80,7 @@ describe('CreateModule', () => {
         it('should be with injector and return result', () => {
           const { ngModuleFactory } = compilerFactory.compiler.moduleDefMock;
 
-          ngModuleFactory.create.and.returnValue('res');
+          ngModuleFactory.create.mockReturnValue('res');
 
           const injector = {};
           const res: any = createModule(class {}, injector as any);
@@ -92,7 +92,7 @@ describe('CreateModule', () => {
         it('should be with converted providers to injector and return result', () => {
           const { ngModuleFactory } = compilerFactory.compiler.moduleDefMock;
 
-          ngModuleFactory.create.and.returnValue('res');
+          ngModuleFactory.create.mockReturnValue('res');
           spyOn(Injector, 'create').and.returnValue('injector from providers');
 
           const providers = [];
@@ -174,7 +174,7 @@ describe('CreateModule', () => {
         it('should be with injector and return result', async () => {
           const { ngModuleFactory } = compilerFactory.compiler.moduleDefMock;
 
-          ngModuleFactory.create.and.returnValue('res');
+          ngModuleFactory.create.mockReturnValue('res');
 
           const injector = {};
           const res: any = await createModuleAsync(class {}, injector as any);
@@ -186,7 +186,7 @@ describe('CreateModule', () => {
         it('should be with converted providers to injector and return result', async () => {
           const { ngModuleFactory } = compilerFactory.compiler.moduleDefMock;
 
-          ngModuleFactory.create.and.returnValue('res');
+          ngModuleFactory.create.mockReturnValue('res');
           spyOn(Injector, 'create').and.returnValue('injector from providers');
 
           const providers = [];

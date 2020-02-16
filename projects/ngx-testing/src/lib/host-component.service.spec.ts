@@ -7,7 +7,7 @@ import { TestTypeToken } from './tokens';
 import { get } from './util';
 
 class HostGeneratorServiceMock {
-  generate = jasmine.createSpy();
+  generate = jest.fn();
 }
 
 class TestTypeTokenMock {}

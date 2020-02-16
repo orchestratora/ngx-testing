@@ -2,7 +2,6 @@ import { ComponentFactoryResolver } from '@angular/core';
 import * as ngCore from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { spyOnModule } from '../../test/spy-on-module';
 import { HostGeneratorService } from './host-generator.service';
 import * as tplGen from './template-gen';
 import {
@@ -39,7 +38,7 @@ describe('Service: HostGenerator', () => {
 
     beforeEach(() => {
       getService();
-      ngModule = spyOnModule(ngCore, 'NgModule');
+      ngModule = spyOn(ngCore, 'NgModule');
     });
 
     it('should return new type', () => {
@@ -59,34 +58,34 @@ describe('Service: HostGenerator', () => {
     });
 
     it('should declare `host`', () => {
-      const host = class {};
-      getService().generateModuleFor(host);
+      class Host {}
+      getService().generateModuleFor(Host);
 
       expect(ngModule).toHaveBeenCalledWith(
         jasmine.objectContaining({
-          declarations: [host],
+          declarations: [Host],
         }),
       );
     });
 
     it('should export `host`', () => {
-      const host = class {};
-      getService().generateModuleFor(host);
+      class Host {}
+      getService().generateModuleFor(Host);
 
       expect(ngModule).toHaveBeenCalledWith(
         jasmine.objectContaining({
-          exports: [host],
+          exports: [Host],
         }),
       );
     });
 
     it('should set `host` as entryComponents', () => {
-      const host = class {};
-      getService().generateModuleFor(host);
+      class Host {}
+      getService().generateModuleFor(Host);
 
       expect(ngModule).toHaveBeenCalledWith(
         jasmine.objectContaining({
-          entryComponents: [host],
+          entryComponents: [Host],
         }),
       );
     });
@@ -206,7 +205,7 @@ describe('Service: HostGenerator', () => {
     });
   });
 
-  xdescribe('genForDirective() method', () => {
+  describe('genForDirective() method', () => {
     describe('when `ExtraConfigToken.hostComponent` provided', () => {
       it('should call `this.genComponent()` with resolved metadata from type', () => {
         const factory = { selector: 'selector', inputs: [], outputs: [] };
@@ -239,7 +238,7 @@ describe('Service: HostGenerator', () => {
           'template',
         );
 
-        expect(getService().genForComponent(Type)).toBe('res');
+        expect(getService().genForDirective(Type)).toBe('res');
         expect(getDirectiveIO).toHaveBeenCalledWith(Type);
         expect(
           TestBed.get(ComponentFactoryResolver).resolveComponentFactory,

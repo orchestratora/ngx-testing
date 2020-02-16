@@ -8,11 +8,11 @@ describe('Util', () => {
     @Directive({ selector: '[ngtTest]' })
     class TestDirective {
       @Input() input1: any;
-      // tslint:disable-next-line: no-input-rename
+      // FIXME: eslint-disable-next-line @angular-eslint/no-input-rename
       @Input('renamedInput') input2: any;
 
       @Output() output1 = new EventEmitter();
-      // tslint:disable-next-line: no-output-rename
+      // eslint-disable-next-line @angular-eslint/no-output-rename
       @Output('renamedOutput') output2 = new EventEmitter();
     }
 

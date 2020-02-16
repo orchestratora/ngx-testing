@@ -1,32 +1,27 @@
-sudo: required
 dist: trusty
 language: node_js
 addons:
   chrome: stable
-cache:
-  npm: true
 notifications:
   email: false
 node_js: lts/*
-branches:
-  only:
-    - master
-    - /^greenkeeper/.*$/
 stages:
   - test
-  - name: deploy
-    if: branch = master and type != pull_request
 jobs:
   include:
     - stage: test
       script:
-        - run-p test:ci lint build
+        - npm run format:check
+        - npm run lint
+        - npm run test:ci
+        - npm run build:prod
         - npm run test:report
-    - stage: release
-      node_js: lts/*
-      script: skip
       deploy:
         provider: script
+        script: npm run semantic-release
         skip_cleanup: true
-        script:
-          - npm run semantic-release
+        keep_history: true
+        on:
+          tags: false
+          all_branches: true
+          condition: $TRAVIS_BRANCH =~ ^(master|next)$
