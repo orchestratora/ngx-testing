@@ -1,5 +1,23 @@
 # NgxTesting - Changelog
 
+# [3.0.0](https://github.com/orchestratora/ngx-testing/compare/v2.1.0...v3.0.0) (2020-02-16)
+
+
+### Bug Fixes
+
+* **package:** require Angular >= v8 as peer dependency ([2558fec](https://github.com/orchestratora/ngx-testing/commit/2558fecbb8eeba3937a6533737ef577566c27cca))
+
+
+### Features
+
+* **host:** allow to pass initial inputs when creating component ([770fd9b](https://github.com/orchestratora/ngx-testing/commit/770fd9bbc9ec3bf9e6ee57f9110ee30f25e32e48))
+* **ng:** update to Angular v9 ([d0aa004](https://github.com/orchestratora/ngx-testing/commit/d0aa0044ba0d1e71ac6639a61d2493621087f253))
+
+
+### BREAKING CHANGES
+
+* **ng:** Now library is compiled with Angular v9
+
 # [3.0.0-next.3](https://github.com/orchestratora/ngx-testing/compare/v3.0.0-next.2...v3.0.0-next.3) (2020-02-16)
 
 
