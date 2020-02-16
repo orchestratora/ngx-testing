@@ -116,6 +116,36 @@ getTestingForDirective(YourDirective, { ngModule: { imports: [...], providers: [
 
 _NOTE:_ `ngModule` prop in second argument is default config for `@NgModule`.
 
+### Initial Inputs
+
+You can set initial inputs to component when creating it:
+
+```ts
+const host = createComponent({ prop1: 'value', prop2: 'value2' });
+```
+
+Also while setting initial inputs you may trigger Change Detection
+so that the view will immediately render with the inputs:
+
+```ts
+const host = createComponent({ ...inputs }, true);
+```
+
+### Setting Inputs
+
+During test you may set inputs using utility method `setInputs()`:
+
+```ts
+host.setInputs({ prop1: 'value1', prop2: 'value2' });
+```
+
+Also while setting inputs you may trigger Change Detection
+so that the view will immediately render with the inputs:
+
+```ts
+host.setInputs({ ...inputs }, true);
+```
+
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
