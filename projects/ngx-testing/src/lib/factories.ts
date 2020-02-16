@@ -6,6 +6,7 @@ import { HostComponentService } from './host-component.service';
 import { HostDirectiveService } from './host-directive.service';
 import { NgxTestingModule } from './ngx-testing.module';
 import {
+  ComponentInputs,
   TestingComponentModuleExtras,
   TestingDirectiveModuleExtras,
 } from './types';
@@ -13,7 +14,10 @@ import {
 export interface TestingFactory<T, H extends Host> {
   testModule: NgxTestingModule<T>;
   getHost(): H;
-  createComponent(): Promise<H>;
+  createComponent(
+    inputs?: ComponentInputs<T>,
+    detectChanges?: boolean,
+  ): Promise<H>;
 }
 
 export function getTestingForComponent<T>(
@@ -21,11 +25,16 @@ export function getTestingForComponent<T>(
   extras?: TestingComponentModuleExtras,
 ): TestingFactory<T, HostComponentService<T>> {
   const testModule = NgxTestingModule.forComponent<T>(type, extras);
+
   const getHost = () =>
-    TestBed.get(HostComponentService) as HostComponentService<T>;
-  const createComponent = () =>
+    TestBed.inject(HostComponentService) as HostComponentService<T>;
+
+  const createComponent = (
+    inputs?: ComponentInputs<T>,
+    detectChanges?: boolean,
+  ) =>
     getHost()
-      .createComponent()
+      .createComponent(inputs, detectChanges)
       .then(getHost);
 
   return { testModule, getHost, createComponent };
@@ -36,11 +45,16 @@ export function getTestingForDirective<T>(
   extras?: TestingDirectiveModuleExtras,
 ): TestingFactory<T, HostDirectiveService<T>> {
   const testModule = NgxTestingModule.forDirective<T>(type, extras);
+
   const getHost = () =>
-    TestBed.get(HostDirectiveService) as HostDirectiveService<T>;
-  const createComponent = () =>
+    TestBed.inject(HostDirectiveService) as HostDirectiveService<T>;
+
+  const createComponent = (
+    inputs?: ComponentInputs<T>,
+    detectChanges?: boolean,
+  ) =>
     getHost()
-      .createComponent()
+      .createComponent(inputs, detectChanges)
       .then(getHost);
 
   return { testModule, getHost, createComponent };

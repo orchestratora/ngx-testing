@@ -10,7 +10,7 @@ import { By } from '@angular/platform-browser';
 
 import { HostGeneratorService } from './host-generator.service';
 import { TestTypeToken } from './tokens';
-import { AsHostComponent, DebugElementTyped } from './types';
+import { AsHostComponent, ComponentInputs, DebugElementTyped } from './types';
 
 export abstract class Host<T = any> implements OnDestroy {
   private hostGeneratorService = this.injector.get(HostGeneratorService);
@@ -63,10 +63,30 @@ export abstract class Host<T = any> implements OnDestroy {
     }
   }
 
-  async createComponent(): Promise<ComponentFixture<AsHostComponent<T>>> {
+  async createComponent(
+    inputs?: ComponentInputs<T>,
+    detectChanges = false,
+  ): Promise<ComponentFixture<AsHostComponent<T>>> {
     await this.compileComponents();
     this._fixture = TestBed.createComponent(this.hostComponentType);
+
+    if (inputs) {
+      this.setInputs(inputs);
+    }
+
+    if (detectChanges) {
+      this.detectChanges();
+    }
+
     return this._fixture;
+  }
+
+  setInputs(inputs: ComponentInputs<T>, detectChanges = false) {
+    Object.assign(this.hostComponent, inputs);
+
+    if (detectChanges) {
+      this.detectChanges();
+    }
   }
 
   overrideHostTemplate(tpl: string): void {
